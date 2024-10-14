@@ -52,7 +52,7 @@ public class SnakesLadder {
         snakesandladderBoard.setVisible(true);
 
 
-       //Test to see if playerNames and playerColors are correct
+       //Test to see if playerNames and playerColors arrays are correct
        System.out.println(Arrays.toString(playerNames));
        System.out.println(Arrays.toString(playerColors));
     }

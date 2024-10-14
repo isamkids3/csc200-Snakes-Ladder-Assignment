@@ -12,7 +12,7 @@ public class Board extends JFrame {
     private int[] playerPositions; 
     private Color[] playerColors;  
     private JPanel boardPanel;
-    private JLabel[] playerLabels;  // Array to hold labels for each player
+    private JLabel[] playerLabels;  
     private HashMap<Integer, Integer> snakes;
     private HashMap<Integer, Integer> ladders;
     private int currentPlayerTurn;
@@ -32,7 +32,7 @@ public class Board extends JFrame {
             playerColors[i] = dotColor[Index];
         }
 
-        // Initialize snakes and ladders
+        // Initialize snakes and ladders on the board
         setupSnakesAndLadders();
 
         // Create the game window
@@ -47,9 +47,9 @@ public class Board extends JFrame {
 
         // Create an array of JLabels to display player information
         playerLabels = new JLabel[numPlayers];
-
+        
+        // Using for loop to create label for each player
         for (int i = 0; i < numPlayers; i++) {
-            // Create a label for each player
             playerLabels[i] = new JLabel("          Player " + (i + 1) + ": " + playerNames[i] + ".         ");
             playerLabels[i].setForeground(playerColors[i]);
             playerInfoPanel.add(playerLabels[i]);  
@@ -67,6 +67,8 @@ public class Board extends JFrame {
             }
         };
         boardPanel.setPreferredSize(new Dimension(700, 700));
+
+        // Add the board to the center of the panel
         add(boardPanel, BorderLayout.CENTER);
 
         // Roll the Dice button
@@ -85,6 +87,8 @@ public class Board extends JFrame {
                 currentPlayerTurn = (currentPlayerTurn + 1) % numPlayers;  // Cycle turns between players
             }
         });
+
+        //Add button to the bottom of the board
         add(rollButton, BorderLayout.SOUTH);
 
         pack();
