@@ -164,28 +164,35 @@ public class Board extends JFrame {
     }
 
     // Move the dot by diceRoll
-    private void movePlayer(int playerIndex, int diceRoll) {
-        playerPositions[playerIndex] += diceRoll;
-        if (playerPositions[playerIndex] > boardSize * boardSize) {
-            playerPositions[playerIndex] = boardSize * boardSize; 
-
-            //Win message and condition
-            if (playerPositions[playerIndex] == 100) {
-                JOptionPane.showMessageDialog(this, "Congratulations, Player " + (playerIndex + 1) + "! You win!");
-                System.exit(0);  // Exit the game after a player wins
-            }
-        }
-
-        // Check for snakes
-        if (snakes.containsKey(playerPositions[playerIndex])) {
-            JOptionPane.showMessageDialog(this, "Oh no! You landed on a snake.");
-            playerPositions[playerIndex] = snakes.get(playerPositions[playerIndex]);
-        }
-
-        // Check for ladders
-        if (ladders.containsKey(playerPositions[playerIndex])) {
-            JOptionPane.showMessageDialog(this, "Great! You climbed a ladder.");
-            playerPositions[playerIndex] = ladders.get(playerPositions[playerIndex]);
-        }
+   private void movePlayer(int playerIndex, int diceRoll) {
+    playerPositions[playerIndex] += diceRoll;
+    
+    // Check if the player exceeds the final tile, bring them back to the final tile if needed
+    if (playerPositions[playerIndex] > boardSize * boardSize) {
+        playerPositions[playerIndex] = boardSize * boardSize;
     }
+
+    // Display the tile number the player lands on
+    JOptionPane.showMessageDialog(this, "Player " + (playerIndex + 1) + " lands on tile " + playerPositions[playerIndex]);
+
+    // Check for snakes
+    if (snakes.containsKey(playerPositions[playerIndex])) {
+        JOptionPane.showMessageDialog(this, "Oh no! You landed on a snake.");
+        playerPositions[playerIndex] = snakes.get(playerPositions[playerIndex]);
+        JOptionPane.showMessageDialog(this, "Player " + (playerIndex + 1) + " moves down to tile " + playerPositions[playerIndex]);
+    }
+
+    // Check for ladders
+    if (ladders.containsKey(playerPositions[playerIndex])) {
+        JOptionPane.showMessageDialog(this, "Great! You climbed a ladder.");
+        playerPositions[playerIndex] = ladders.get(playerPositions[playerIndex]);
+        JOptionPane.showMessageDialog(this, "Player " + (playerIndex + 1) + " moves up to tile " + playerPositions[playerIndex]);
+    }
+
+    // Check if the player wins
+    if (playerPositions[playerIndex] == boardSize * boardSize) {
+        JOptionPane.showMessageDialog(this, "Congratulations, Player " + (playerIndex + 1) + "! You win!");
+        System.exit(0);  // Exit the game 
+    }
+}
 }
