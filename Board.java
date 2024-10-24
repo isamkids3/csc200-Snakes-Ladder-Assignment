@@ -130,7 +130,30 @@ public class Board extends JFrame {
             for (int col = 0; col < boardSize; col++) {
                 int x = col * cellSize;
                 int y = row * cellSize;
-                g.setColor(Color.WHITE);
+                if ( counter >= 1 && counter <= 5 ) {
+                    g.setColor(new Color(184, 220, 228));
+                }
+                else if ( counter >= 16 && counter <= 20 ) {
+                    g.setColor(new Color(255,212,180));
+                }
+                else if ( counter >= 31 && counter <= 35 ) {
+                    g.setColor(new Color(200,212,156));
+                }
+                else if ( counter >= 46 && counter <= 50 ) {
+                    g.setColor(new Color(255,252,156));
+                }
+                else if ( counter >= 61 && counter <= 65 ) {
+                    g.setColor(new Color(208,196,220));
+                }
+                else if ( counter >= 76 && counter <= 80 ) {
+                    g.setColor(new Color(255,156,204));
+                }
+                 else if ( counter >= 91 && counter <= 95 ) {
+                    g.setColor(new Color(8,212,212));
+                }
+                else {
+                    g.setColor(Color.WHITE);
+                }
                 g.fillRect(x, y, cellSize, cellSize);
                 g.setColor(Color.BLACK);
                 g.drawRect(x, y, cellSize, cellSize);
@@ -174,6 +197,60 @@ public class Board extends JFrame {
 
     // Display the tile number the player lands on
     JOptionPane.showMessageDialog(this, "Player " + (playerIndex + 1) + " lands on tile " + playerPositions[playerIndex]);
+
+    // Showing message when player lands in blue properties
+    if (playerPositions[playerIndex] >= 1 && playerPositions[playerIndex] <= 5){
+        String place = "";
+        switch(playerPositions[playerIndex]){
+            case 1: place = "Tropicana The Residences"; 
+            break;
+            case 2: place = "Pavilion Embassy Kuala Lumpur"; 
+            break;
+            case 3: place = "Binjai On The Park"; 
+            break;
+            case 4: place = "Marc Service Residence"; 
+            break;
+            case 5: place = "The Mews"; 
+            break;
+        }
+        JOptionPane.showMessageDialog(null, "Welcome to Blue Properties! You are at "+ place + ".");
+    }
+
+     // Showing message when player lands in peach properties
+    if (playerPositions[playerIndex] >= 16 && playerPositions[playerIndex] <= 20){
+        String place = "";
+        switch(playerPositions[playerIndex]){
+            case 16: place = "D’Ivo Residences"; 
+            break;
+            case 17: place = "Petalz Residences"; 
+            break;
+            case 18: place = "Southbank Residence"; 
+            break;
+            case 19: place = "The Address"; 
+            break;
+            case 20: place = "Waltz Residences"; 
+            break;
+        }
+        JOptionPane.showMessageDialog(null, "Welcome to Peach Properties! You are at "+ place + ".");
+    }
+
+    // Showing message when player lands in green properties
+    if (playerPositions[playerIndex] >= 31 && playerPositions[playerIndex] <= 35){
+        String place = "";
+        switch(playerPositions[playerIndex]){
+            case 31: place = "TTDI Ascencia"; 
+            break;
+            case 32: place = "Sri TTDI"; 
+            break;
+            case 33: place = "The Residence Condominium"; 
+            break;
+            case 34: place = "Sinaran TTDI"; 
+            break;
+            case 35: place = "Villa Flora"; 
+            break;
+        }
+        JOptionPane.showMessageDialog(null, "Welcome to Green Properties! You are at "+ place + ".");
+    }
 
     // Check for snakes
     if (snakes.containsKey(playerPositions[playerIndex])) {
