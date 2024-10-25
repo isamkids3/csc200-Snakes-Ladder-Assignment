@@ -1,3 +1,4 @@
+// Method to generate card
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -12,10 +13,11 @@ public class challengeCard{
                     try {
                      // Load the image using ImageIO
                         BufferedImage img = ImageIO.read(new File(imagePath)); // Path to image
-                        JLabel imageLabel = new JLabel(new ImageIcon(img)); // Create a label with the BufferedImage
+                        JLabel imageLabel = new JLabel(new ImageIcon(img)); 
 
                         f.add(imageLabel); // Add the label to the frame
                      } catch (IOException e) {
+                        System.out.println("error image didn't load"); //Check if error
                     }
                     f.setVisible(true); // Make the frame visible
     }

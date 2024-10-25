@@ -265,17 +265,40 @@ public class Board extends JFrame {
     //Message when player lands on pick a card tile
     if (playerPositions[playerIndex] == 25 || playerPositions[playerIndex] == 55 || playerPositions[playerIndex] == 85){
         JOptionPane.showMessageDialog(null, "Pick a card!");
-        int randomCard = 1;
-
+        int randomCard = (int) (Math.random() * 6) + 1;
+        
         //Challenge based on random number generated. Challenge generated using method in challengeCard.java
         switch (randomCard){
             case 1: 
-                    
+                    new challengeCard("Sing your favourite song!", "singingDude.jpg");
                     break;
             case 2: 
-                
+                    new challengeCard("Clap your hand three times, spin around twice and sit down!", "clappingHands.jpg");
                     break;
-        
+            case 3: 
+                    new challengeCard("Do the Chicken Dance!", "chickenDance.jpg");
+                    break;
+            case 4: 
+                    new challengeCard("Do the Floss Dance!", "floss.jpg");
+                    break;
+            case 5: 
+                    new challengeCard("Walk like a robot!", "robot.jpg");
+                    break;
+            case 6: 
+                    new challengeCard("Say the alphabet backwards!", "alphabet.jpg");
+                    break;
+            case 7: 
+                    new challengeCard("Name five states in the USA!", "usa.jpg");
+                    break;
+            case 8: 
+                    new challengeCard("Count to ten in a different language!", "count.jpg");
+                    break;
+            case 9: 
+                    new challengeCard("Play air guitar!", "airguitar.png");
+                    break;
+            case 10: 
+                    new challengeCard("Do five star jumps!", "star.png");
+                    break;
         
     }
                 
