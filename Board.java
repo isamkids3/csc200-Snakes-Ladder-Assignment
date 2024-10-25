@@ -3,6 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import javax.swing.*;
+import java.io.*;
+import javax.imageio.*;
+import java.awt.image.BufferedImage;
 
 public class Board extends JFrame {
 
@@ -125,7 +128,7 @@ public class Board extends JFrame {
         int cellSize = boardPanel.getWidth() / boardSize; // Size of each cell
         int counter = 1;
 
-        // Draw grid cells and numbers
+        // Draw grid cells and numbers with coloured cells for special tiles
         for (int row = 0; row < boardSize; row++) {
             for (int col = 0; col < boardSize; col++) {
                 int x = col * cellSize;
@@ -150,6 +153,9 @@ public class Board extends JFrame {
                 }
                  else if ( counter >= 91 && counter <= 95 ) {
                     g.setColor(new Color(8,212,212));
+                }
+                else if ( counter == 85 || counter == 55 || counter == 25) {
+                    g.setColor(Color.green);
                 }
                 else {
                     g.setColor(Color.WHITE);
@@ -183,6 +189,10 @@ public class Board extends JFrame {
             // Draw player dot with assigned color
             g.setColor(playerColors[i]);
             g.fillOval(x, y, cellSize / 2, cellSize / 2);
+
+            //Black outline for better contrast
+            g.setColor(Color.BLACK);
+            g.drawOval(x, y, cellSize / 2, cellSize / 2);
         }
     }
 
@@ -213,7 +223,7 @@ public class Board extends JFrame {
             case 5: place = "The Mews"; 
             break;
         }
-        JOptionPane.showMessageDialog(null, "Welcome to Blue Properties! You are at "+ place + ".");
+        JOptionPane.showMessageDialog(null, "Welcome to Blue Properties! You are at "+ place + ".");// Lok Sang or Jericho u can change this to include an image
     }
 
      // Showing message when player lands in peach properties
@@ -231,7 +241,7 @@ public class Board extends JFrame {
             case 20: place = "Waltz Residences"; 
             break;
         }
-        JOptionPane.showMessageDialog(null, "Welcome to Peach Properties! You are at "+ place + ".");
+        JOptionPane.showMessageDialog(null, "Welcome to Peach Properties! You are at "+ place + ".");// Lok Sang or Jericho u can change this to include an image
     }
 
     // Showing message when player lands in green properties
@@ -249,8 +259,28 @@ public class Board extends JFrame {
             case 35: place = "Villa Flora"; 
             break;
         }
-        JOptionPane.showMessageDialog(null, "Welcome to Green Properties! You are at "+ place + ".");
+        JOptionPane.showMessageDialog(null, "Welcome to Green Properties! You are at "+ place + "."); // Lok Sang or Jericho u can change this to include an image
     }
+
+    //Message when player lands on pick a card tile
+    if (playerPositions[playerIndex] == 25 || playerPositions[playerIndex] == 55 || playerPositions[playerIndex] == 85){
+        JOptionPane.showMessageDialog(null, "Pick a card!");
+        int randomCard = 1;
+
+        //Challenge based on random number generated. Challenge generated using method in challengeCard.java
+        switch (randomCard){
+            case 1: 
+                    
+                    break;
+            case 2: 
+                
+                    break;
+        
+        
+    }
+                
+      
+        }
 
     // Check for snakes
     if (snakes.containsKey(playerPositions[playerIndex])) {
