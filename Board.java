@@ -403,12 +403,13 @@ public class Board extends JFrame {
     if (playerPositions[playerIndex] == boardSize * boardSize) {
         //Reuse challenge card method to display a win image
         new challengeCard("Winner!","winner.png");
-        JOptionPane.showMessageDialog(this, "Congratulations, Player " + (playerIndex + 1) + "! You win!");
+        //Sleep method to pause the program for 3 seconds.
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
             e.printStackTrace(); // Handle the exception, e.g., logging it
         }
+        JOptionPane.showMessageDialog(this, "Congratulations, Player " + (playerIndex + 1) + "! You win!");
         System.exit(0);  // Exit the game 
     }
 }
