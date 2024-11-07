@@ -2,11 +2,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 import javax.swing.*;
-import java.io.*;
-import javax.imageio.*;
-import java.awt.image.BufferedImage;
-import java.util.concurrent.TimeUnit; //to pause the program
 
 public class Board extends JFrame {
 
@@ -41,7 +38,7 @@ public class Board extends JFrame {
 
         // Create the game window
         setTitle("Snake and Ladders Game");
-        setSize(700, 700);
+        setSize(525, 525);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -70,7 +67,7 @@ public class Board extends JFrame {
                 drawBoard(g);   // Draw the grid and players
             }
         };
-        boardPanel.setPreferredSize(new Dimension(700, 700));
+        boardPanel.setPreferredSize(new Dimension(525, 525));
 
         // Add the board to the center of the panel
         add(boardPanel, BorderLayout.CENTER);
@@ -168,11 +165,18 @@ public class Board extends JFrame {
 
                  // Label snakes and ladders
                 if (snakes.containsKey(counter)) {
+                    Font originalFont = g.getFont();
+                    g.setFont(new Font("SansSerif", Font.PLAIN, 10));
                     g.setColor(Color.RED);
                     g.drawString("S(" + counter + "->" + snakes.get(counter) + ")", x + 5, y + 15);
+                    g.setFont(originalFont);
                 } else if (ladders.containsKey(counter)) {
+                    Font originalFont = g.getFont();
+                    g.setFont(new Font("SansSerif", Font.PLAIN, 10));
                     g.setColor(Color.GREEN);
                     g.drawString("L(" + counter + "->" + ladders.get(counter) + ")", x + 5, y + 15);
+                    g.setFont(originalFont);
+
                 }
 
                 counter++;
